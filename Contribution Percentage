@@ -1,0 +1,41 @@
+Create a Complex Formula
+Create a formula field that classifies an Opportunity by the size of its contribution to an individual quarterly target.
+Create a helper formula field:
+Object: Opportunity
+Field Label: Contribution Percentage
+Field Name: Contribution_Percentage
+Formula Return Type: Percent
+Calculation: What percentage of the $100,000 individual quarterly target does this opportunity represent?
+Hint: Use the Expected Revenue field in your calculation.
+Create a formula field that shows an opportunity’s progress:
+Field Label: Contribution Level
+Field Name: Contribution_Level
+Formula Return Type: Text
+Return values:
+Less than or equal to 10%: Low
+Between 10% and 40%: Medium
+More than 40%: High
+Hint: CASE statements can’t contain Boolean functions. Use IF statements instead.
+
+Create a helper formula field:
+Object: Opportunity
+Field Label: Contribution Percentage
+Field Name: Contribution_Percentage
+Formula Return Type: Percent 
+yukardaki icin formula:
+ExpectedRevenue / 100000
+
+
+Create a formula field that shows an opportunity’s progress:
+Field Label: Contribution Level
+Field Name: Contribution_Level
+Formula Return Type: Text
+Yukardaki icin formula: 
+IF( Contribution_Percentage__c <= 0.1 , "Low", 
+ IF(AND(Contribution_Percentage__c > 0.1, Contribution_Percentage__c < 0.4), "Medium",	"High") 			
+ 
+ yada bu ustteki formulaya alternatif formula:
+ IF( Contribution_Percentage__c <=0.1,"Low",
+IF( Contribution_Percentage__c >0.1 && Contribution_Percentage__c < 0.4,"Medium","High"))
+ 
+ Boylece bir opp detail page ini actigimizda hesaplamalar yapilmis old nu gorecegiz farkli fieldlarda.
